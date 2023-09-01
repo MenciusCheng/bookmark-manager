@@ -1,0 +1,10 @@
+{
+  "serviceName": "bookmark-manager",
+  "port": 8080,
+  "databases": [
+    {
+      "name": "bookmark",
+      "master": "root:@tcp(127.0.0.1:3306)/bookmark?charset=utf8mb4&parseTime=True&loc=Local"
+    }
+  ]
+}
