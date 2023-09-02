@@ -6,21 +6,21 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func BookmarkCreate(c *gin.Context) {
-	req := model.Bookmark{}
+func BookmarkFolderCreate(c *gin.Context) {
+	req := model.BookmarkFolder{}
 	if err := c.BindJSON(&req); err != nil {
 		JSONErr(c, ErrCodeParam, err)
 		return
 	}
 
-	if req.FolderID > 0 {
-		if _, err := dao.BookmarkFolderDao.Info(req.FolderID); err != nil {
+	if req.ParentID > 0 {
+		if _, err := dao.BookmarkFolderDao.Info(req.ParentID); err != nil {
 			JSONErr(c, ErrCodeParam, err)
 			return
 		}
 	}
 
-	err := dao.BookmarkDao.Create(&req)
+	err := dao.BookmarkFolderDao.Create(&req)
 	if err != nil {
 		JSONErr(c, ErrCodeInternal, err)
 		return
@@ -29,21 +29,21 @@ func BookmarkCreate(c *gin.Context) {
 	JSON(c, nil)
 }
 
-func BookmarkUpdate(c *gin.Context) {
-	req := model.Bookmark{}
+func BookmarkFolderUpdate(c *gin.Context) {
+	req := model.BookmarkFolder{}
 	if err := c.BindJSON(&req); err != nil {
 		JSONErr(c, ErrCodeParam, err)
 		return
 	}
 
-	if req.FolderID > 0 {
-		if _, err := dao.BookmarkFolderDao.Info(req.FolderID); err != nil {
+	if req.ParentID > 0 {
+		if _, err := dao.BookmarkFolderDao.Info(req.ParentID); err != nil {
 			JSONErr(c, ErrCodeParam, err)
 			return
 		}
 	}
 
-	err := dao.BookmarkDao.Update(&req)
+	err := dao.BookmarkFolderDao.Update(&req)
 	if err != nil {
 		JSONErr(c, ErrCodeInternal, err)
 		return
@@ -52,14 +52,14 @@ func BookmarkUpdate(c *gin.Context) {
 	JSON(c, nil)
 }
 
-func BookmarkDelete(c *gin.Context) {
-	req := model.BookmarkReq{}
+func BookmarkFolderDelete(c *gin.Context) {
+	req := model.BookmarkFolderReq{}
 	if err := c.BindJSON(&req); err != nil {
 		JSONErr(c, ErrCodeParam, err)
 		return
 	}
 
-	err := dao.BookmarkDao.Delete(req.ID)
+	err := dao.BookmarkFolderDao.Delete(req.ID)
 	if err != nil {
 		JSONErr(c, ErrCodeInternal, err)
 		return
@@ -68,14 +68,14 @@ func BookmarkDelete(c *gin.Context) {
 	JSON(c, nil)
 }
 
-func BookmarkInfo(c *gin.Context) {
-	req := model.BookmarkReq{}
+func BookmarkFolderInfo(c *gin.Context) {
+	req := model.BookmarkFolderReq{}
 	if err := c.BindJSON(&req); err != nil {
 		JSONErr(c, ErrCodeParam, err)
 		return
 	}
 
-	res, err := dao.BookmarkDao.Info(req.ID)
+	res, err := dao.BookmarkFolderDao.Info(req.ID)
 	if err != nil {
 		JSONErr(c, ErrCodeInternal, err)
 		return
@@ -84,19 +84,19 @@ func BookmarkInfo(c *gin.Context) {
 	JSON(c, res)
 }
 
-func BookmarkPage(c *gin.Context) {
-	req := model.BookmarkPageReq{}
+func BookmarkFolderPage(c *gin.Context) {
+	req := model.BookmarkFolderPageReq{}
 	if err := c.BindJSON(&req); err != nil {
 		JSONErr(c, ErrCodeParam, err)
 		return
 	}
 
-	list, count, err := dao.BookmarkDao.Page(req)
+	list, count, err := dao.BookmarkFolderDao.Page(req)
 	if err != nil {
 		JSONErr(c, ErrCodeInternal, err)
 		return
 	}
-	res := model.BookmarkPageRes{
+	res := model.BookmarkFolderPageRes{
 		List:  list,
 		Count: count,
 	}

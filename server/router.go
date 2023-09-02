@@ -18,5 +18,11 @@ func NewRouter() *gin.Engine {
 	v1.POST("bookmark/info", handler.BookmarkInfo)
 	v1.POST("bookmark/page", handler.BookmarkPage)
 
+	v1.POST("bookmarkFolder/create", handler.BookmarkFolderCreate)
+	v1.POST("bookmarkFolder/update", handler.BookmarkFolderUpdate)
+	v1.POST("bookmarkFolder/delete", handler.BookmarkFolderDelete)
+	v1.POST("bookmarkFolder/info", handler.BookmarkFolderInfo)
+	v1.POST("bookmarkFolder/page", handler.BookmarkFolderPage)
+
 	return r
 }

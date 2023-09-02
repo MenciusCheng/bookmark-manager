@@ -18,8 +18,8 @@ type BookmarkReq struct {
 
 type BookmarkPageReq struct {
 	PageReq
-	ID       int64 `json:"id"`        // 主键
-	FolderID int64 `json:"folder_id"` // 所属文件夹ID
+	ID       int64 `json:"id"`       // 主键
+	FolderID int64 `json:"folderID"` // 所属文件夹ID
 }
 
 type BookmarkPageRes struct {

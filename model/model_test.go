@@ -16,7 +16,7 @@ func TestAutoMigrate(t *testing.T) {
 		t.Error(err)
 		return
 	}
-	if err := conf.DB.Set("gorm:table_options", "COMMENT='书签文件夹'").AutoMigrate(&Folder{}); err != nil {
+	if err := conf.DB.Set("gorm:table_options", "COMMENT='书签文件夹'").AutoMigrate(&BookmarkFolder{}); err != nil {
 		t.Error(err)
 		return
 	}
