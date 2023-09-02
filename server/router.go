@@ -13,10 +13,10 @@ func NewRouter() *gin.Engine {
 	v1.Any("/ping", handler.Ping)
 
 	v1.POST("bookmark/create", handler.BookmarkCreate)
-	v1.POST("bookmark/update", handler.BookmarkCreate)
-	v1.POST("bookmark/delete", handler.BookmarkCreate)
-	v1.GET("bookmark/list", handler.BookmarkList)
-	v1.GET("bookmark/info", handler.BookmarkList)
+	v1.POST("bookmark/update", handler.BookmarkUpdate)
+	v1.POST("bookmark/delete", handler.BookmarkDelete)
+	v1.POST("bookmark/info", handler.BookmarkInfo)
+	v1.POST("bookmark/page", handler.BookmarkPage)
 
 	return r
 }
