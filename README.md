@@ -7,5 +7,5 @@ curl -X POST http://127.0.0.1:8080/api/v1/bookmark/create  -H 'Content-Type: app
 ```
 
 ```
-curl http://127.0.0.1:8080/api/v1/bookmark/list
+curl -X POST 'http://127.0.0.1:8080/api/v1/bookmark/page' -H 'Content-Type: application/json' -d '{}'
 ```
