@@ -10,8 +10,8 @@ type ListBookmarkRes struct {
 	Count int64            `json:"count"`
 }
 
-func ListBookmark() (ListBookmarkRes, error) {
-	bookmarks, count, err := dao.ListBookmark()
+func ListBookmark(req model.BookmarkPageReq) (ListBookmarkRes, error) {
+	bookmarks, count, err := dao.BookmarkDao.Page(req)
 	if err != nil {
 		return ListBookmarkRes{}, err
 	}
